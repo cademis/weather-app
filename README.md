@@ -33,4 +33,4 @@ TODO #8 create some logic of what to pack if certain forcast conditions are met
 
 # Next action
 
-TODO #6 if location doesn't exist, clear the forecast info
+TODO #9 Style the app with some CSS
