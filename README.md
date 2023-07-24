@@ -14,3 +14,7 @@ Structure the code with separte modules. eg
 - One for the the api calls
 - one for rendering the page
 - one for handling the logic eg addeventlisteners
+
+# TODO
+
+TODO #3 throw an error if the input location is not a valid location
