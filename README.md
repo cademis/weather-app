@@ -15,6 +15,18 @@ Structure the code with separte modules. eg
 - one for rendering the page
 - one for handling the logic eg addeventlisteners
 
-# TODO
+# Draft action plan
 
-TODO #3 throw an error if the input location is not a valid location
+- Implement a basic version of the ui.js module that can display some hard-coded data.
+- Connect the api.js and ui.js modules in main.js. At this point, you should be able to enter a location, make a request to the weather API, and see the raw data displayed in the UI.
+- Implement the logic.js module. Start by implementing a function that takes some hard-coded weather data and returns a list of items to pack.
+- Connect the logic.js module to the rest of the app. Now you should be able to enter a location, and see a list of items to pack based on the actual weather data for that location.
+- Add error handling. The app should be able to handle errors in the API request gracefully and display an error message to the user.
+- Implement the loading component. The app should display a loading animation while waiting for the API response, and hide it once the response is received.
+- Style the app. Use CSS to style the app and improve its appearance.
+- Test the app. Try different locations and weather conditions to ensure the app works as expected.
+- Refine the app based on testing. Make any necessary adjustments to the logic or UI based on your testing.
+
+# Next action
+
+TODO #5 If the location exists, show some data on the page about tomorrows weather
