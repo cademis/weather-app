@@ -17,12 +17,10 @@ export function renderHeader() {
   inputElement.id = "location-input";
   const buttonElement = createElement("button", formElement);
   buttonElement.textContent = "submit";
-  const errorMessageElement = createElement("p", formElement);
-  errorMessageElement.textContent = "no errors";
 }
 
 export function renderMain() {
   const mainElement = createElement("main", bodyElement);
   const pElement = createElement("p", mainElement);
-  pElement.textContent = "Weather app";
+  pElement.textContent = "Weather app. Input your location above";
 }

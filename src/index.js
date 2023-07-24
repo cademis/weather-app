@@ -1,4 +1,4 @@
-import { getTodaysWeather, getTomorrowsWeather } from "./js/api.js";
+import { getTomorrowsWeather } from "./js/api.js";
 import { renderHeader, renderMain } from "./js/ui.js";
 import { showTomorrowsForecast } from "./js/logic.js";
 
@@ -12,7 +12,6 @@ function getLocationInput() {
   const formElement = headerElement.querySelector("form");
   const inputElement = formElement.querySelector("input");
   const buttonElement = formElement.querySelector("button");
-  const errorMessageElement = formElement.querySelector("p");
   buttonElement.addEventListener("click", async (event) => {
     event.preventDefault();
     location = inputElement.value;
@@ -22,10 +21,8 @@ function getLocationInput() {
         console.log(response);
         showTomorrowsForecast(response);
       });
-      errorMessageElement.textContent = `location exists (${location})`;
     } catch (error) {
-      console.error("this isn't a valid location", error);
-      errorMessageElement.textContent = `location doesn't exist (${location})`;
+      showTomorrowsForecast(location, error);
     }
   });
 }

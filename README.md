@@ -27,6 +27,10 @@ Structure the code with separte modules. eg
 - Test the app. Try different locations and weather conditions to ensure the app works as expected.
 - Refine the app based on testing. Make any necessary adjustments to the logic or UI based on your testing.
 
+## Backlog
+
+TODO #8 create some logic of what to pack if certain forcast conditions are met
+
 # Next action
 
 TODO #6 if location doesn't exist, clear the forecast info
