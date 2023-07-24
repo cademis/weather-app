@@ -7,27 +7,40 @@ async function fetchData(url) {
     const response = await fetch(url, { mode: "cors" });
 
     if (!response.ok) {
-      throw new Error("response isn't ok");
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
+
+    if (data.error) {
+      console.log(data.error.message);
+      throw new Error("Data error: " + data.error.message);
+    }
+
     return data;
   } catch (error) {
-    console.error("eek something went wrong", error);
+    console.error("Error fetching data", error);
+    throw error;
   }
 }
 
 export async function getTodaysWeather(location) {
   const url = `https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${location}`;
   fetchData(url).then((response) => {
-    console.log(
-      `the current temp in ${location} is ${response.current.temp_c} degC`
-    );
+    try {
+      console.log(
+        `the current temp in ${location} is ${response.current.temp_c} degC`
+      );
+    } catch (error) {
+      console.log("area doesn't exist", error);
+    }
   });
 }
 
 export async function getTomorrowsWeather(location) {
-  const url = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=2&aqi=no&alerts=no`;
-  const data = fetchData(url).then((response) => {
+  try {
+    const url = `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${location}&days=2&aqi=no&alerts=no`;
+
+    const response = await fetchData(url);
     console.log(response.forecast.forecastday[1]);
     const data = response.forecast.forecastday[1];
     const morningForecast = data.hour[8]; //change the number based on the hour. e.g. hour[8] is 08:00
@@ -35,6 +48,8 @@ export async function getTomorrowsWeather(location) {
     let windMph = morningForecast.wind_mph;
     let tempC = morningForecast.temp_c;
     return { chanceOfRain, windMph, tempC };
-  });
-  return data;
+  } catch (error) {
+    console.error("Error fetching tomorrow's weather", error);
+    throw error;
+  }
 }

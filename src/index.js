@@ -11,15 +11,20 @@ function getLocationInput() {
   const formElement = headerElement.querySelector("form");
   const inputElement = formElement.querySelector("input");
   const buttonElement = formElement.querySelector("button");
-  buttonElement.addEventListener("click", (event) => {
+  const errorMessageElement = formElement.querySelector("p");
+  buttonElement.addEventListener("click", async (event) => {
     event.preventDefault();
     location = inputElement.value;
-    // console.log(location);
-    // console.log("button clicked", event);
-    getTodaysWeather(location);
-    getTomorrowsWeather(location).then((response) => {
-      console.log(response);
-    });
+
+    try {
+      await getTomorrowsWeather(location).then((response) => {
+        console.log(response);
+      });
+      errorMessageElement.textContent = `location exists (${location})`;
+    } catch (error) {
+      console.error("this isn't a valid location", error);
+      errorMessageElement.textContent = `location doesn't exist (${location})`;
+    }
   });
 }
 
