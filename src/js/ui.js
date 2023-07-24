@@ -22,7 +22,7 @@ export function renderHeader() {
 }
 
 export function renderMain() {
-  const mainElement = createElement("div", bodyElement);
+  const mainElement = createElement("main", bodyElement);
   const pElement = createElement("p", mainElement);
   pElement.textContent = "Weather app";
 }

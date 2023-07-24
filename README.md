@@ -29,4 +29,4 @@ Structure the code with separte modules. eg
 
 # Next action
 
-TODO #5 If the location exists, show some data on the page about tomorrows weather
+TODO #6 if location doesn't exist, clear the forecast info

@@ -1,5 +1,6 @@
 import { getTodaysWeather, getTomorrowsWeather } from "./js/api.js";
 import { renderHeader, renderMain } from "./js/ui.js";
+import { showTomorrowsForecast } from "./js/logic.js";
 
 let location = "glasgow"; //default location
 
@@ -19,6 +20,7 @@ function getLocationInput() {
     try {
       await getTomorrowsWeather(location).then((response) => {
         console.log(response);
+        showTomorrowsForecast(response);
       });
       errorMessageElement.textContent = `location exists (${location})`;
     } catch (error) {
